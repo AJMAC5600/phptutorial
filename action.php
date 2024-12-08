@@ -1,22 +1,19 @@
 <?php 
-$username=htmlspecialchars($_POST['username']);
-$pass=htmlspecialchars($_POST['password']);
+session_start();
+require("database.php");
 if(isset($_POST['submit'])){
     if($_SERVER['REQUEST_METHOD']==='POST'){
-        if(strcmp($username,"Aadarsh")===0 && strcasecmp($pass,"Aadarsh")===0){
-            header("location:fuck.php");;
-            setcookie("username",$username);
-            setcookie("password",$pass);
+        $name=htmlspecialchars($_POST['name']); 
+        $id=htmlspecialchars($_POST['id']);
+        $address=htmlspecialchars($_POST['address']);
+        $number=htmlspecialchars($_POST['number']);
+
+        $sql="INSERT INTO `emp_table`(`id`, `name`, `address`, `phone`) VALUES ($id,'$name','$address',$number)";
+        $result=$conn->query($sql);
+        if($result){
+            header("Location: index.php");
+            exit;
         }
-        elseif(strcmp($username,"Omkar")===0 && strcasecmp($pass,"Omkar")===0){
-            header("location:fuck.php");;
-            setcookie("username",$username);
-            setcookie("password",$pass);
-        }
-        
-        else{
-            echo "<h1>Enter the correct password</h1>";
-        }
-    }
-}
+
+    }}
 ?>
