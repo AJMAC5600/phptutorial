@@ -20,7 +20,7 @@ include('database.php');
         $name=htmlspecialchars($_POST['name']);
         $sql="update `emp_table` set `name`='$name' where `id`='$id'";
         $res=$conn->query($sql);
-        if($res) echo "don updateing";
+        if($res) echo "done updateing";
         }
         ?>
     </form>
