@@ -34,6 +34,10 @@ include('config/dbconn.php')
         background-color: #f2f2f2;
         color: black;
     }
+
+    td>form {
+        display: flex;
+    }
     </style>
 </head>
 
@@ -61,6 +65,10 @@ include('config/dbconn.php')
             <td><form method='post' action='delete.php'>
             <input type='hidden' name='id' value='{$row['id']}'>
             <button type='submit' class='delete-btn' name='submit'>Delete</button>
+            </form>
+            <form method='post' action='update.php'>
+            <input type='hidden' name='id' value='{$row['id']}'>
+            <button type='submit' class='delete-btn' name='submit'>Update</button>
             </form>
             
             </td></tr>"; }
