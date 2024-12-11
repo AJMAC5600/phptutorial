@@ -1,5 +1,6 @@
 <?php 
-include('config/dbconn.php')
+include('config/dbconn.php');
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en" style="background-color: #34495e;">
@@ -55,7 +56,8 @@ include('config/dbconn.php')
                 <th>Action</th>
             </tr>
             <?php 
-            
+            if($_SESSION['logstatus']){
+                
                 $sql="SELECT * FROM user";
             $res=$conn->query($sql);
             while($row=$res->fetch_assoc()){
@@ -74,6 +76,10 @@ include('config/dbconn.php')
             </td></tr>"; }
             
             
+            }
+            else{
+                header('location:login.php');
+            }
             ?>
 
         </table>
